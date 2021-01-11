@@ -1,0 +1,65 @@
+package br.com.tmn.beerapp.ui.viewmodels
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import br.com.tmn.beerapp.domain.entities.Beer
+import br.com.tmn.beerapp.domain.useCases.GetBeerList
+import br.com.tmn.beerapp.domain.useCases.GetBeersById
+import br.com.tmn.beerapp.domain.useCases.GetSearchBeer
+import br.com.tmn.beerapp.domain.utils.Result
+import br.com.tmn.beerapp.ui.utils.Data
+import br.com.tmn.beerapp.ui.utils.Status
+import br.com.tmn.beerapp.ui.viewmodels.base.BaseViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
+class PunkViewModel(
+    val getBeersById: GetBeersById,
+    val getBeerList: GetBeerList,
+    val getSearchBeer: GetSearchBeer
+) : BaseViewModel() {
+
+    private var mutableMainStateList = MutableLiveData<Data<List<Beer>>>()
+    val mainStateList: LiveData<Data<List<Beer>>>
+        get() {
+            return mutableMainStateList
+        }
+
+
+    fun onStartHome(page: Int, perPage: Int) = launch {
+        mutableMainStateList.value = Data(responseType = Status.LOADING)
+        when (val result = withContext(Dispatchers.IO) { getBeerList(page, perPage) }) {
+            is Result.Failure -> {
+                mutableMainStateList.value = Data(responseType = Status.ERROR, error = result.exception)
+            }
+            is Result.Success -> {
+                mutableMainStateList.value = Data(responseType = Status.SUCCESSFUL, data = result.data)
+            }
+        }
+    }
+
+    fun onClickToBeerDetails(id: Int) = launch {
+        mutableMainStateList.value = Data(responseType = Status.LOADING)
+        when (val result = withContext(Dispatchers.IO) { getBeersById(id) }) {
+            is Result.Failure -> {
+                mutableMainStateList.value = Data(responseType = Status.ERROR, error = result.exception)
+            }
+            is Result.Success -> {
+                mutableMainStateList.value = Data(responseType = Status.SUCCESSFUL, data = result.data)
+            }
+        }
+    }
+
+    fun onSearchClick(beerName:String, page: Int, perPage: Int) = launch {
+        mutableMainStateList.value = Data(responseType = Status.LOADING)
+        when (val result = withContext(Dispatchers.IO) { getSearchBeer(beerName, page, perPage) }) {
+            is Result.Failure -> {
+                mutableMainStateList.value = Data(responseType = Status.ERROR, error = result.exception)
+            }
+            is Result.Success -> {
+                mutableMainStateList.value = Data(responseType = Status.SUCCESSFUL, data = result.data)
+            }
+        }
+    }
+}
