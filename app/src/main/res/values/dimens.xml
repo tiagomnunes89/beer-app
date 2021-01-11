@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text Dimensions -->
+    <dimen name="font_large_title">40sp</dimen>
+    <dimen name="font_primary_title">24sp</dimen>
+    <dimen name="font_normal_text">20sp</dimen>
+    <dimen name="font_secondary_title">18sp</dimen>
+    <dimen name="font_tertiary_title">16sp</dimen>
+    <dimen name="font_text">14sp</dimen>
+    <dimen name="font_mentions">12sp</dimen>
+    <dimen name="font_min_text_size">8sp</dimen>
+
+    <!--Sizes-->
+    <dimen name="monster_size">296dp</dimen>
+    <dimen name="x_huge_size">110dp</dimen>
+    <dimen name="huge_size">102dp</dimen>
+    <dimen name="very_largest_size">96dp</dimen>
+    <dimen name="xxxxx_largest_size">88dp</dimen>
+    <dimen name="xxxx_largest_size">80dp</dimen>
+    <dimen name="xxx_largest_size">72dp</dimen>
+    <dimen name="xx_largest_size">64dp</dimen>
+    <dimen name="largest_size">48dp</dimen>
+    <dimen name="x_largest_size">40dp</dimen>
+    <dimen name="large_size">32dp</dimen>
+    <dimen name="default_size">24dp</dimen>
+    <dimen name="short_size">16dp</dimen>
+    <dimen name="semi_short_size">12dp</dimen>
+    <dimen name="little_size">8dp</dimen>
+    <dimen name="tiny_size">4dp</dimen>
+    <dimen name="very_tiny_size">2dp</dimen>
+    <dimen name="no_size">0dp</dimen>
+
+    <!--Image Beer-->
+    <dimen name="beer_image_width">25dp</dimen>
+    <dimen name="beer_image_height">100dp</dimen>
+</resources>

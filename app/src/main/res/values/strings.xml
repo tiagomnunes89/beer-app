@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">BeerApp</string>
+    <string name="title_home">Beer Menu</string>
+    <string name="text_beer_name">Bhrama</string>
+    <string name="text_beer_tagline">A cerveja que desce redondo.</string>
+    <string name="text_abv">7.5</string>
+    <string name="image_beer_content_description">The photo of the beer.</string>
+    <string name="image_beer_description_splash">Image of a beer in the cup.</string>
+    <string name="image_beer_home_description">A man preparing a drink of beer</string>
 </resources>

@@ -7,7 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import br.com.tmn.beerapp.R
 
-const val TIME_MILLIS = 3000L
+const val MINIMUM_SPLASH_TIME = 2000L
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,8 @@ class SplashActivity : AppCompatActivity() {
 
     private fun timeSplash() {
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY))
-        }, TIME_MILLIS)
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }, MINIMUM_SPLASH_TIME)
     }
 }
