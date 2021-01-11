@@ -16,6 +16,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var descriptionBeer: TextView
     private lateinit var taglineBeer: TextView
     private lateinit var abvBeer: TextView
+    private lateinit var ibuBeer: TextView
     private lateinit var imageBeer: SimpleDraweeView
     private lateinit var backArrow: ImageView
 
@@ -45,6 +46,10 @@ class DetailActivity : AppCompatActivity() {
         abvBeer = findViewById(R.id.beer_abv)
         val abv = preferences.getFloat("beerABV", 0f).toString()
         abvBeer.text = abv
+
+        ibuBeer = findViewById(R.id.beer_ibu)
+        val ibu = preferences.getFloat("beerIBU", 0f).toString()
+        ibuBeer.text = ibu
 
         backArrow = findViewById(R.id.back_arrow)
         backArrow.setOnClickListener {

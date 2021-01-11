@@ -8,5 +8,6 @@ class PunkResponse(
     val description: String,
     val tagline: String,
     @SerializedName("image_url") val imageURL: String,
-    val abv: Float
+    val abv: Float,
+    val ibu: Float
 )

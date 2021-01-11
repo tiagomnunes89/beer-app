@@ -12,7 +12,8 @@ class PunkMapperService : BaseMapperRepository<PunkResponse, Beer> {
             type.description,
             type.tagline,
             type.imageURL,
-            type.abv
+            type.abv,
+            type.ibu
         )
 
     override fun transformToRepository(type: Beer): PunkResponse =
@@ -22,6 +23,7 @@ class PunkMapperService : BaseMapperRepository<PunkResponse, Beer> {
             type.description,
             type.tagline,
             type.imageURL,
-            type.abv
+            type.abv,
+            type.ibu
         )
 }

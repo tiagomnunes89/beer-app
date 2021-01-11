@@ -69,6 +69,7 @@
                 android:text="@string/text_beer_tagline"
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_tertiary_title"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/beer_image"
                 app:layout_constraintTop_toBottomOf="@id/title_beer" />
 
@@ -88,17 +89,56 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/short_size"
                 android:layout_marginTop="@dimen/little_size"
-                android:background="@drawable/ball_format"
+                android:background="@drawable/red_ball"
                 app:layout_constraintStart_toEndOf="@+id/beer_image"
                 app:layout_constraintTop_toBottomOf="@id/beer_description">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/tiny_size"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:text="@string/abv_label"/>
 
                 <TextView
                     android:id="@+id/beer_abv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/little_size"
                     android:fontFamily="@font/bubblegum_sans"
                     android:text="@string/text_abv"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_secondary_title" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_beer_ibu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/short_size"
+                android:layout_marginTop="@dimen/little_size"
+                android:background="@drawable/green_ball"
+                app:layout_constraintStart_toEndOf="@+id/frame_beer_abv"
+                app:layout_constraintTop_toBottomOf="@id/beer_description">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/tiny_size"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:text="@string/ibu_label"/>
+
+                <TextView
+                    android:id="@+id/beer_ibu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/little_size"
+                    android:fontFamily="@font/bubblegum_sans"
+                    android:text="@string/text_ibu"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_secondary_title" />
             </FrameLayout>

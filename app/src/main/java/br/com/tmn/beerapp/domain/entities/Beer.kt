@@ -3,7 +3,7 @@ package br.com.tmn.beerapp.domain.entities
 val NOT_FOUND = "NOT FOUND"
 val NO_IMAGE = "NO IMAGE"
 val DEFAULT_ID = 0
-val DEFAULT_ABV = 0f
+val DEFAULT_FLOAT = 0f
 
 class Beer(
     val id: Int = DEFAULT_ID,
@@ -11,5 +11,6 @@ class Beer(
     val description: String = NOT_FOUND,
     val tagline: String = NOT_FOUND,
     val imageURL: String = NO_IMAGE,
-    val abv: Float = DEFAULT_ABV
+    val abv: Float = DEFAULT_FLOAT,
+    val ibu: Float = DEFAULT_FLOAT
 )

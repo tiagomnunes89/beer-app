@@ -17,6 +17,7 @@ class SharedPreferencesConfig {
         preferenceEditor?.putString("beerImage", beer.imageURL)
         preferenceEditor?.putString("beerDescription", beer.description)
         preferenceEditor?.putFloat("beerABV", beer.abv)
+        preferenceEditor?.putFloat("beerIBU", beer.ibu)
         preferenceEditor?.apply()
     }
 }

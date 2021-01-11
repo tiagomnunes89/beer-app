@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,27 +15,28 @@ import br.com.tmn.beerapp.ui.adapters.PunkAdapter
 import br.com.tmn.beerapp.ui.utils.Data
 import br.com.tmn.beerapp.ui.utils.Status
 import br.com.tmn.beerapp.ui.viewmodels.PunkViewModel
+import com.airbnb.lottie.LottieAnimationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-const val MINIMUM_LOADING_TIME = 1500L
+const val MINIMUM_LOADING_TIME = 1000L
 
 class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModel<PunkViewModel>()
     private lateinit var recyclerView: RecyclerView
-    private lateinit var beerLoading: FrameLayout
+    private lateinit var beerAnimationLoader: LottieAnimationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         recyclerView = findViewById(R.id.recycler_beer_list)
-        beerLoading = findViewById(R.id.loader_layout)
-
-        callStartService()
+        beerAnimationLoader = findViewById(R.id.loading_beer)
 
         viewModel.mainStateList.observe(::getLifecycle, ::updateUI)
         viewModel.mainStateDetail.observe(::getLifecycle, ::updateDetailUI)
+
+        callStartService()
     }
 
     private fun updateUI(beersData: Data<List<Beer>>) {
@@ -80,11 +80,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showLoading() {
-        beerLoading.visibility = View.VISIBLE
+        beerAnimationLoader.visibility = View.VISIBLE
     }
 
     private fun hideLoading() {
-        beerLoading.visibility = View.GONE
+        beerAnimationLoader.visibility = View.GONE
     }
 
     private fun setBeerList(beerList: List<Beer>) {
@@ -100,10 +100,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun callClickDetailsService(item: Beer) {
-        showLoading()
-        Handler(Looper.getMainLooper()).postDelayed({
-            viewModel.onClickToBeerDetails(item.id, this@MainActivity.applicationContext)
-        }, MINIMUM_LOADING_TIME)
+        viewModel.onClickToBeerDetails(item.id, this@MainActivity.applicationContext)
     }
 
     private fun itemClickListener() = object : PunkAdapter.OnItemClickListener {
