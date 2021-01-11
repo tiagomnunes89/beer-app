@@ -4,12 +4,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import br.com.tmn.beerapp.domain.entities.Beer
 
-class SharedPreferencesConfig {
+class SharedPreferencesConfig(private val context: Context) {
 
     private val sharedPrefFile = "com.example.android.PREFERENCE_FILE"
     private var preferences: SharedPreferences? = null
 
-    fun saveCurrentBeerData(beer: Beer, context: Context) {
+    fun saveCurrentBeerData(beer: Beer) {
         preferences = context.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
         val preferenceEditor = preferences?.edit()
         preferenceEditor?.putString("beerName", beer.name)

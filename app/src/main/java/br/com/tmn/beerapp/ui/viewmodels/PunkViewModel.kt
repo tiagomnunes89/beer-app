@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PunkViewModel(
-    val sharedPreferencesConfig: SharedPreferencesConfig,
+    private val sharedPreferencesConfig: SharedPreferencesConfig,
     val getBeersById: GetBeersById,
     val getBeerList: GetBeerList,
     val getSearchBeer: GetSearchBeer
@@ -60,7 +60,7 @@ class PunkViewModel(
                 mutableMainStateDetail.value =
                     Data(responseType = Status.SUCCESSFUL, data = result.data)
                 result.data?.get(0)
-                    ?.let { sharedPreferencesConfig.saveCurrentBeerData(it, context) }
+                    ?.let { sharedPreferencesConfig.saveCurrentBeerData(it) }
             }
         }
     }
