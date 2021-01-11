@@ -1,9 +1,11 @@
+@file:Suppress("SpellCheckingInspection")
+
 package br.com.tmn.beerapp.domain.entities
 
-val NOT_FOUND = "NOT FOUND"
-val NO_IMAGE = "NO IMAGE"
-val DEFAULT_ID = 0
-val DEFAULT_FLOAT = 0f
+const val NOT_FOUND = "NOT FOUND"
+const val NO_IMAGE = "NO IMAGE"
+const val DEFAULT_ID = 0
+const val DEFAULT_FLOAT = 0f
 
 class Beer(
     val id: Int = DEFAULT_ID,

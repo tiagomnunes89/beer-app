@@ -69,7 +69,7 @@ dependencies {
     //image renderer
     implementation 'com.facebook.fresco:fresco:2.3.0'
 
-    //beerloading
+    //beerLoading
     def lottieVersion = "3.6.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 }

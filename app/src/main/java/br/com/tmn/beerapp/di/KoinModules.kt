@@ -11,7 +11,6 @@ import br.com.tmn.beerapp.domain.useCases.GetSearchBeer
 import br.com.tmn.beerapp.ui.utils.SharedPreferencesConfig
 import br.com.tmn.beerapp.ui.viewmodels.PunkViewModel
 import org.koin.android.ext.koin.androidContext
-import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val repositoriesModule = module {
