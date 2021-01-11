@@ -13,44 +13,45 @@ private const val INIT_TRYOUT = 1
 class PunkRequestGenerator {
 
     private val httpClient = OkHttpClient.Builder()
-            .addInterceptor(
-                    HttpLoggingInterceptor().apply {
-                        this.level = HttpLoggingInterceptor.Level.BODY
-                    }
-            )
-            .addInterceptor { chain ->
-                val defaultRequest = chain.request()
-
-                val defaultHttpUrl = defaultRequest.url
-
-                val httpUrl = defaultHttpUrl.newBuilder()
-                        .build()
-
-                val requestBuilder = defaultRequest.newBuilder()
-                        .url(httpUrl)
-
-                chain.proceed(requestBuilder.build())
+        .addInterceptor(
+            HttpLoggingInterceptor().apply {
+                this.level = HttpLoggingInterceptor.Level.BODY
             }
-            .addInterceptor { chain ->
-                val request = chain.request()
-                var response = chain.proceed(request)
-                var tryOuts = INIT_TRYOUT
+        )
+        .addInterceptor { chain ->
+            val defaultRequest = chain.request()
 
-                while (!response.isSuccessful && tryOuts < MAX_TRYOUTS) {
-                    Log.d(
-                            this@PunkRequestGenerator.javaClass.simpleName, "intercept: timeout/connection failure, " +
+            val defaultHttpUrl = defaultRequest.url
+
+            val httpUrl = defaultHttpUrl.newBuilder()
+                .build()
+
+            val requestBuilder = defaultRequest.newBuilder()
+                .url(httpUrl)
+
+            chain.proceed(requestBuilder.build())
+        }
+        .addInterceptor { chain ->
+            val request = chain.request()
+            var response = chain.proceed(request)
+            var tryOuts = INIT_TRYOUT
+
+            while (!response.isSuccessful && tryOuts < MAX_TRYOUTS) {
+                Log.d(
+                    this@PunkRequestGenerator.javaClass.simpleName,
+                    "intercept: timeout/connection failure, " +
                             "performing automatic retry ${(tryOuts + 1)}"
-                    )
-                    tryOuts++
-                    response = chain.proceed(request)
-                }
-
-                response
+                )
+                tryOuts++
+                response = chain.proceed(request)
             }
+
+            response
+        }
 
     private val builder = Retrofit.Builder()
-            .baseUrl(PUNK_BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+        .baseUrl(PUNK_BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
 
     fun <S> createService(serviceClass: Class<S>): S {
         val retrofit = builder.client(httpClient.build()).build()

@@ -10,14 +10,24 @@ import br.com.tmn.beerapp.R
 import br.com.tmn.beerapp.domain.entities.Beer
 import com.facebook.drawee.view.SimpleDraweeView
 
-
 const val TYPE_HEADER = 0
 const val TYPE_ITEM = 1
 
 class PunkAdapter(private val exampleList: List<Beer>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private lateinit var onItemClickListener: OnItemClickListener
+
+    interface OnItemClickListener {
+        fun onItemClick(item: Beer)
+    }
+
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.onItemClickListener = onItemClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
         return if (viewType == TYPE_ITEM) {
             PunkViewHolder(
                 LayoutInflater.from(parent.context).inflate(
@@ -45,6 +55,10 @@ class PunkAdapter(private val exampleList: List<Beer>) :
 
             holder.itemView.animation =
                 loadAnimation(holder.itemView.context, R.anim.fade_scale_animation)
+
+            holder.itemView.setOnClickListener {
+                onItemClickListener.onItemClick(exampleList[position - 1])
+            }
         }
     }
 

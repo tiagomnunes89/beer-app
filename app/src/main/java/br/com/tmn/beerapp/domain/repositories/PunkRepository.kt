@@ -11,8 +11,10 @@ interface PunkRepository {
     fun getBeersList(page: Int, perPage: Int)
             : Result<List<Beer>>
 
-    fun getSearchBeer(beerName: String,
-                      page: Int,
-                      perPage: Int)
+    fun getSearchBeer(
+        beerName: String,
+        page: Int,
+        perPage: Int
+    )
             : Result<List<Beer>>
 }

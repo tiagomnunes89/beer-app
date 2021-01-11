@@ -71,7 +71,6 @@
                 android:text="@string/text_abv"
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_secondary_title" />
-
         </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

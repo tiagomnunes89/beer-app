@@ -6,7 +6,7 @@ import br.com.tmn.beerapp.domain.repositories.PunkRepository
 import br.com.tmn.beerapp.domain.utils.Result
 
 class PunkRepositoryImpl(
-        private val punkService: PunkService
+    private val punkService: PunkService
 ) : PunkRepository {
 
     override fun getBeersById(id: Int): Result<List<Beer>> {

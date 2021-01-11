@@ -12,7 +12,7 @@
     <dimen name="font_min_text_size">8sp</dimen>
 
     <!--Sizes-->
-    <dimen name="monster_size">296dp</dimen>
+    <dimen name="monster_size">500dp</dimen>
     <dimen name="x_huge_size">110dp</dimen>
     <dimen name="huge_size">102dp</dimen>
     <dimen name="very_largest_size">96dp</dimen>

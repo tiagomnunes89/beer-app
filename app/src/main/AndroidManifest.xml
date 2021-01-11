@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeerApp"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activities.DetailActivity"/>
         <activity android:name=".ui.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

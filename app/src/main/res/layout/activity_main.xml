@@ -6,30 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".ui.activities.MainActivity">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/loading_beer"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            app:lottie_rawRes="@raw/beer"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_beer_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="10"
-            tools:listitem="@layout/item_home"/>
+            tools:listitem="@layout/item_home" />
+
+        <FrameLayout
+            android:id="@+id/loader_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/black_transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading_beer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/monster_size"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/beer" />
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

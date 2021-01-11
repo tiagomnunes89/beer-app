@@ -6,22 +6,22 @@ import br.com.tmn.beerapp.domain.entities.Beer
 class PunkMapperService : BaseMapperRepository<PunkResponse, Beer> {
 
     override fun transform(type: PunkResponse): Beer =
-            Beer(
-                    type.id,
-                    type.name,
-                    type.description,
-                    type.tagline,
-                    type.imageURL,
-                    type.abv
-            )
+        Beer(
+            type.id,
+            type.name,
+            type.description,
+            type.tagline,
+            type.imageURL,
+            type.abv
+        )
 
     override fun transformToRepository(type: Beer): PunkResponse =
-            PunkResponse(
-                    type.id,
-                    type.name,
-                    type.description,
-                    type.tagline,
-                    type.imageURL,
-                    type.abv
-            )
+        PunkResponse(
+            type.id,
+            type.name,
+            type.description,
+            type.tagline,
+            type.imageURL,
+            type.abv
+        )
 }
